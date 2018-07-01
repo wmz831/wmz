@@ -1,10 +1,14 @@
 server:
-  port: 80
-  context-path: /wmz
+  port: 8089
+#  context-path: /wmz
   error:
     path: /error
 
 spring:
+  http:
+      multipart:
+        max-file-size: 500Mb
+        max-request-size: 500Mb
   thymeleaf:
     cache: false #关闭缓存，及时刷新,生产环境建议打开
     encoding: UTF-8
@@ -12,5 +16,10 @@ spring:
     restart:
       enabled: true
 #      additional-paths: src/main
-  mvc:
-    static-path-pattern:
+
+uploadPath: E:/FileServer/
+videoPath: E:/FileServer/Video/
+imagePath: E:/FileServer/Image/
+virtualPath: E:/FileServer/Virtual/
+documentPath: E:/FileServer/Document/
+audioPath: E:/FileServer/Audio/
