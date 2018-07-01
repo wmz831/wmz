@@ -1,15 +1,16 @@
 package com.wmz;
 
+import com.wmz.utils.TypeValid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
+import java.io.*;
 
+/**
+ * 模拟路径的接口
+ */
 @RequestMapping
 @RestController
 public class testController {
@@ -50,7 +51,29 @@ public class testController {
     }
 
     @PostMapping("/update")
-    public @ResponseBody boolean save(@RequestParam MultipartFile file, String uuid){
+    public boolean save(@RequestParam MultipartFile file){
+        System.out.println("FileMsg:" + file.getContentType());
+        String fileName = file.getOriginalFilename();
+        //新增uuid文件夹
+        File filePath = new File(virtualPath);
+        if(!filePath.exists()){
+            filePath.mkdir();
+        }
+        //新增文件
+        File addFile = new File(virtualPath + "/" + fileName);
+        if(addFile.exists()){
+            return false;
+        }
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(addFile);
+            fos.write(file.getBytes());
+            fos.flush();
+            fos.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return true;
     }
 

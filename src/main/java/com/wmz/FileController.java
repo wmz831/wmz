@@ -36,17 +36,21 @@ public class FileController {
      */
     @GetMapping("/getFile/{uuid}/{file:.+}")
     public void get(@PathVariable("file") String file,@PathVariable("uuid") String uuid, HttpServletResponse response){
-        fileRead(file,uuid,response);
+        if(file!=null && !"".equals(file) && uuid!=null && !"".equals(uuid)){
+            fileRead(file,uuid,response);
+        }
     }
 
     /**
-     *
+     * 文件上传接口
+     * url地址格式：ip/action/type/uuid/fileName
+     * @return
      */
     @PostMapping(value = "/saveFile/{uuid}")
-    public boolean put(@RequestParam("file") MultipartFile file, @PathVariable("uuid") String uuid){
-        if(file != null && !"".equals(file)){
+    public boolean save(@RequestParam("file") MultipartFile file, @PathVariable("uuid") String uuid){
+        if(file != null && !"".equals(file) && uuid!=null && !"".equals(uuid)){
             try{
-                fileWrite(file,uuid);
+                return fileWrite(file,uuid);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -88,15 +92,10 @@ public class FileController {
         }
     }
 
-    /**
-     * 文件上传接口
-     * url地址格式：ip/action/type/uuid/fileName
-     * @return
-     */
+
 //    @PostMapping(value = "/saveFile/{uuid}")
-    public void fileWrite(@RequestParam("file") MultipartFile file, @PathVariable("uuid") String uuid) throws Exception{
+    public boolean fileWrite(@RequestParam("file") MultipartFile file, @PathVariable("uuid") String uuid) throws Exception{
         //获取文件基本信息，判断文件类型
-        //file.getInputStream();
         System.out.println("FileMsg:" + file.getContentType());
         String fileName = file.getOriginalFilename();
         String path = setPath(TypeValid.valid(fileName));
@@ -106,10 +105,15 @@ public class FileController {
             filePath.mkdir();
         }
         //新增文件
-        FileOutputStream fos = new FileOutputStream( path + uuid + "/" + fileName);
+        File addFile = new File(path + uuid + "/" + fileName);
+        if(addFile.exists()){
+            return false;
+        }
+        FileOutputStream fos = new FileOutputStream(addFile);
         fos.write(file.getBytes());
         fos.flush();
         fos.close();
+        return true;
     }
 
     //0-其他 1-图片 2-视频 3-文档 4-音频
