@@ -11,7 +11,6 @@ import java.io.*;
 /**
  * 模拟路径的接口
  */
-@RequestMapping
 @RestController
 public class testController {
 
@@ -50,7 +49,7 @@ public class testController {
 
     }
 
-    @PostMapping("/update")
+    @PostMapping("/upload")
     public boolean save(@RequestParam MultipartFile file){
         System.out.println("FileMsg:" + file.getContentType());
         String fileName = file.getOriginalFilename();

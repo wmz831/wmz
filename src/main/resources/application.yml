@@ -9,13 +9,6 @@ spring:
       multipart:
         max-file-size: 500Mb
         max-request-size: 500Mb
-  thymeleaf:
-    cache: false #关闭缓存，及时刷新,生产环境建议打开
-    encoding: UTF-8
-  devtools:
-    restart:
-      enabled: true
-#      additional-paths: src/main
 
 uploadPath: E:/FileServer/
 videoPath: E:/FileServer/Video/
