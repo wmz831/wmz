@@ -1,12 +1,7 @@
 package com.wmz;
 
-import com.wmz.utils.QtFastStart;
+import com.wmz.fastDFS.MyQtFastStart;
 import org.junit.Test;
-
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * Create by Wang Mingzhen om 2018/7/13

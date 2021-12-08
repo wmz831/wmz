@@ -1,4 +1,4 @@
-package com.wmz;
+package com.wmz.vo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package com.wmz;
+package com.wmz.vo;
 
 import com.wmz.utils.TypeValid;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package com.wmz;
+package com.wmz.fastDFS;
 
 import java.io.Closeable;
 import java.io.FileInputStream;

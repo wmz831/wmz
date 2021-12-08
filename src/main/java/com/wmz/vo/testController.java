@@ -1,6 +1,5 @@
-package com.wmz;
+package com.wmz.vo;
 
-import com.wmz.utils.TypeValid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
