@@ -1,4 +1,4 @@
-package com.wmz.test;
+package com.wmz.demo;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;

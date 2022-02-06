@@ -76,7 +76,7 @@ public class FileUtil {
 
     public static void main(String[] args) {
         FileUtil.txtChange("G:/txt/change/todo.txt", "",
-                "我", "c", "「", "」");
+                "我", "c", "」", "「");
     }
 
 }

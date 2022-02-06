@@ -1,4 +1,4 @@
-package com.wmz.test;
+package com.wmz.demo;
 
 import java.io.Serializable;
 
